@@ -12,7 +12,7 @@ const soham901Config: Soham901Config = {
     name: "Henmova",
   },
   backup: {
-    github: { REPO_OWNER: "soham901", REPO_NAME: "henmova-site" },
+    github: { REPO_OWNER: "HenmovaWork", REPO_NAME: "hemova-web" },
   },
 };
 
