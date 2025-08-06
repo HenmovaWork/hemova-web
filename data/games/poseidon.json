@@ -1,0 +1,14 @@
+{
+  "title": "Poseidon",
+  "tagline": "First-person psychological horror game",
+  "coverImage": "/games/poseidon/coverImage.png",
+  "genres": "Action, Adventure, Horror",
+  "artStyles": "3D, Semi-realistic",
+  "platforms": "Pc",
+  "downloadLinks": [
+    {
+      "platform": "steam",
+      "url": "https://store.steampowered.com/app/3687030/Poseidon/"
+    }
+  ]
+}
