@@ -1,0 +1,24 @@
+{
+  "title": "game-development-trends",
+  "content": {
+    "$mdtype": "Tag",
+    "name": "document",
+    "attributes": {},
+    "children": [
+      {
+        "$mdtype": "Tag",
+        "name": "paragraph",
+        "attributes": {},
+        "children": [
+          {
+            "$mdtype": "Text",
+            "value": "Explore the latest trends in game development, from AI-powered NPCs to immersive VR experiences. Discover what's shaping the future of gaming."
+          }
+        ]
+      }
+    ]
+  },
+  "coverImage": "/logos/logo-3.webp",
+  "publishedAt": "2024-01-20",
+  "excerpt": "Explore the latest trends in game development, from AI-powered NPCs to immersive VR experiences."
+}

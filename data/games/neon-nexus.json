@@ -1,0 +1,36 @@
+{
+  "title": "neon-nexus",
+  "tagline": "The Future is Now",
+  "content": {
+    "$mdtype": "Tag",
+    "name": "document",
+    "attributes": {},
+    "children": [
+      {
+        "$mdtype": "Tag",
+        "name": "paragraph",
+        "attributes": {},
+        "children": [
+          {
+            "$mdtype": "Text",
+            "value": "Dive into a cyberpunk world where technology meets humanity. Experience the ultimate sci-fi adventure with cutting-edge graphics and immersive gameplay."
+          }
+        ]
+      }
+    ]
+  },
+  "coverImage": "/logos/logo-1.webp",
+  "genres": "Action RPG, Open World, Sci-Fi",
+  "artStyles": "Cyberpunk, Neon-noir, High-tech",
+  "platforms": "PC, PlayStation 5, Xbox Series X/S",
+  "downloadLinks": [
+    {
+      "platform": "steam",
+      "url": "https://store.steampowered.com/neon-nexus"
+    },
+    {
+      "platform": "epic",
+      "url": "https://epicgames.com/neon-nexus"
+    }
+  ]
+}

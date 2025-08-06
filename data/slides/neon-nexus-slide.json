@@ -1,0 +1,20 @@
+{
+  "title": "neon-nexus-slide",
+  "backgroundImage": "/logos/logo-1.webp",
+  "overlayText": "Dive into a cyberpunk world where technology meets humanity. Experience the ultimate sci-fi adventure.",
+  "titleImage": "/logos/logo-2.svg",
+  "ctaButtons": [
+    {
+      "text": "Play Now",
+      "url": "/games/neon-nexus",
+      "style": "primary"
+    },
+    {
+      "text": "Watch Trailer",
+      "url": "/games/neon-nexus",
+      "style": "outline-solid"
+    }
+  ],
+  "order": 2,
+  "isActive": true
+}
