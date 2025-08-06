@@ -1,25 +1,6 @@
 {
   "title": "mystic-realms",
   "tagline": "Magic Awaits Beyond",
-  "content": {
-    "$mdtype": "Tag",
-    "name": "document",
-    "attributes": {},
-    "children": [
-      {
-        "$mdtype": "Tag",
-        "name": "paragraph",
-        "attributes": {},
-        "children": [
-          {
-            "$mdtype": "Text",
-            "value": "Embark on an epic fantasy journey through magical realms filled with ancient mysteries and powerful artifacts. Discover your destiny in this enchanting adventure."
-          }
-        ]
-      }
-    ]
-  },
-  "coverImage": "/logos/logo-2.webp",
   "genres": "Adventure, Fantasy RPG, Puzzle",
   "artStyles": "Fantasy, Hand-painted, Whimsical",
   "platforms": "PC, Nintendo Switch, PlayStation 4/5",
