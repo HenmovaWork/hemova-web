@@ -37,7 +37,7 @@ export default function LatestGames({ games }: LatestGamesProps) {
           Latest Games
         </h1>
         <div className="flex flex-wrap justify-center items-start gap-6">
-          {games.slice(0, 8).map((game, index) => (
+          {games.slice(0, 3).map((game, index) => (
             <Card
               key={game.slug}
               className="bg-white/10 backdrop-blur-xs border-white/20 text-white hover:bg-white/20 transition-all cursor-pointer w-80 h-[22rem] in-out duration-150"

@@ -11,7 +11,7 @@ export default function ServicesSection() {
       img: "/service/cover.png",
       button: {
         title: "Services",
-        href: "/service",
+        href: "/services",
       },
     },
     {

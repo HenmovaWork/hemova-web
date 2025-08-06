@@ -21,15 +21,13 @@ export default function MobileNav({
       <div className="flex w-full justify-between items-center">
         <Link href="/">
           <Image
-            draggable={false}
-            className="  w-30 object-cover"
-            src={"/logos/logo-2.webp"}
+            src="/logos/logo-2.webp"
+            className="w-20 object-cover"
             alt="Henmova Logo"
-            width={96}
-            height={32}
-            style={{ objectFit: "contain" }}
+            width={120}
+            height={120}
             quality={85}
-            priority
+            loading="lazy"
           />
           <span className="sr-only">Henmova</span>
         </Link>
@@ -50,11 +48,11 @@ export default function MobileNav({
           >
             <Image
               draggable={false}
-              src={"/logos/logo-2.svg"}
+              src={"/logos/logo-2.webp"}
               alt="Henmova Logo"
               width={96}
               height={32}
-              quality={85}
+             
               loading="lazy"
             />
             <span className="sr-only">Henmova</span>

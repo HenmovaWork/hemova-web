@@ -7,15 +7,15 @@ export default async function Footer() {
   return (
     <footer className="bg-white dark:bg-gray-900 border-t-2 border-gray-200">
       <div className="mx-auto w-full max-w-7xl px-4 py-6 lg:py-8">
-        <div className="flex flex-col md:flex-row md:justify-between md:items-center">
+        <div className="flex flex-col md:flex-row md:justify-between md:items-center md:h-10">
           <div className="mb-6 md:mb-0 flex justify-center ">
             <Link href="/" className="flex items-center justify-center">
               <Image
                 src="/logos/logo-2.webp"
                 className="w-30 object-cover"
                 alt="Henmova Logo"
-                width={220}
-                height={220}
+                width={120}
+                height={120}
                 quality={85}
                 loading="lazy"
               />

@@ -1,8 +1,7 @@
 {
   "title": "neon-nexus-slide",
-  "backgroundImage": "/logos/logo-1.webp",
+  "backgroundImage": "/carousel/featured-game/bg-2.jpg",
   "overlayText": "Dive into a cyberpunk world where technology meets humanity. Experience the ultimate sci-fi adventure.",
-  "titleImage": "/logos/logo-2.svg",
   "ctaButtons": [
     {
       "text": "Play Now",
