@@ -97,6 +97,7 @@ export default function NewsList({ blogs }: NewsListProps) {
               {/* Cover Image */}
               <div className="relative aspect-video overflow-hidden">
                 <Image
+                  draggable={false}
                   className="transition-all ease-in-out duration-300 group-hover:scale-105 object-cover"
                   src={
                     typeof blog.coverImage === "string"

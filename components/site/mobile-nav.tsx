@@ -21,8 +21,9 @@ export default function MobileNav({
       <div className="flex w-full justify-between items-center">
         <Link href="/">
           <Image
-            className="h-12 w-full"
-            src={"/logos/logo-2.svg"}
+            draggable={false}
+            className="  w-30 object-cover"
+            src={"/logos/logo-2.webp"}
             alt="Henmova Logo"
             width={96}
             height={32}
@@ -48,6 +49,7 @@ export default function MobileNav({
             onClick={() => setIsOpen(false)}
           >
             <Image
+              draggable={false}
               src={"/logos/logo-2.svg"}
               alt="Henmova Logo"
               width={96}

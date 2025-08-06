@@ -15,7 +15,7 @@ const Carousel = ({ slides }: { slides: Slide[] }) => {
 
   const prevSlide = () => {
     setCurrentIndex(
-      (prevIndex) => (prevIndex - 1 + slides.length) % slides.length,
+      (prevIndex) => (prevIndex - 1 + slides.length) % slides.length
     );
   };
 
@@ -33,11 +33,13 @@ const Carousel = ({ slides }: { slides: Slide[] }) => {
       {slides.map((slide, index) => (
         <div
           key={slide.slug}
-          className={`absolute inset-0 transition-opacity duration-500 ${index === currentIndex ? "opacity-100" : "opacity-0"
-            }`}
+          className={`absolute inset-0 transition-opacity duration-500 ${
+            index === currentIndex ? "opacity-100" : "opacity-0"
+          }`}
         >
           <Image
-          draggable={false}
+            draggable={false}
+           
             src={slide.backgroundImage?.src ?? ""}
             alt={slide.backgroundImage?.alt || "Carousel background"}
             fill
@@ -49,10 +51,12 @@ const Carousel = ({ slides }: { slides: Slide[] }) => {
           <div className="absolute bottom-0 left-0 right-0 flex flex-col justify-center items-center gap-3">
             {slide.titleImage && (
               <Image
-                className={`absolute left-1/2 -translate-x-1/2 transition-all ease-in-out duration-500 w-56  select-none ${index === currentIndex
-                  ? "bottom-56 opacity-100"
-                  : "bottom-40 opacity-0"
-                  }`}
+                draggable={false}
+                className={`absolute left-1/2 -translate-x-1/2 transition-all ease-in-out duration-500 w-56  select-none ${
+                  index === currentIndex
+                    ? "bottom-56 opacity-100"
+                    : "bottom-40 opacity-0"
+                }`}
                 src={slide.titleImage.src}
                 alt={slide.titleImage.alt || "Slide title"}
                 width={slide.titleImage.width || 224}
@@ -65,21 +69,28 @@ const Carousel = ({ slides }: { slides: Slide[] }) => {
               {slide.overlayText}
             </div>
             {slide.ctaButtons && slide.ctaButtons.length > 0 && (
-              <div className="absolute bottom-24 left-1/2 -translate-x-1/2 flex gap-4 max-sm:flex-col">
+              <div className="absolute  bottom-24 left-1/2 -translate-x-1/2 flex gap-4 w-full">
+                <div
+                className="mx-auto flex gap-3"
+                >
+
+                
                 {slide.ctaButtons.map((button: any, btnIndex: number) => (
                   <Link
                     key={btnIndex}
                     href={button.url}
-                    className={`px-6 py-3 text-center rounded-lg font-semibold transition-all ${button.style === "primary"
-                      ? "bg-blue-600 text-white hover:bg-blue-700"
-                      : button.style === "secondary"
+                    className={`px-6 py-3 text-center rounded-lg font-semibold transition-all ${
+                      button.style === "primary"
+                        ? "bg-blue-600 text-white hover:bg-blue-700"
+                        : button.style === "secondary"
                         ? "border-2 border-white text-white hover:bg-white hover:text-black"
                         : "border-2 border-white text-white hover:bg-white hover:text-black"
-                      }`}
+                    }`}
                   >
                     {button.text}
                   </Link>
                 ))}
+                </div>
               </div>
             )}
           </div>
@@ -102,10 +113,11 @@ const Carousel = ({ slides }: { slides: Slide[] }) => {
           <button
             key={index}
             onClick={() => setCurrentIndex(index)}
-            className={`w-3 h-3 rounded-full ${index === currentIndex
-              ? "bg-white"
-              : "bg-transparent border border-white/50"
-              }`}
+            className={`w-3 h-3 rounded-full ${
+              index === currentIndex
+                ? "bg-white"
+                : "bg-transparent border border-white/50"
+            }`}
           />
         ))}
       </div>

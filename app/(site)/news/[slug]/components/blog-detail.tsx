@@ -104,6 +104,7 @@ export default function BlogDetail({ blog }: BlogDetailProps) {
           {/* Cover Image */}
           <div className="mb-8">
             <Image
+              draggable={false}
               src={blog.coverImage.src}
               alt={blog.coverImage.alt || blog.title}
               width={blog.coverImage.width || 800}

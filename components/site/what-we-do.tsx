@@ -15,6 +15,7 @@ export function MyCard({
       <CardHeader>
         <CardTitle>
           <Image
+            draggable={false}
             className="mx-auto sm:w-40 w-28"
             src={img}
             alt={title}

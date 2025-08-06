@@ -1,3 +1,4 @@
+import { cn } from "@/lib";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -7,17 +8,17 @@ export default function ServicesSection() {
       color: "#256FFF",
       title: "Our Services",
       desc: "Love games? We've got you covered! We make cool 2D/3D adventures and web games that pop. Whether you play on PC or mobile, our Unity and Unreal experts have you covered. We'll even spruce up your favorite games or fix any bugs. Let's level up your gaming fun!",
-      img: "/services/cover.png",
+      img: "/service/cover.png",
       button: {
         title: "Services",
-        href: "/services",
+        href: "/service",
       },
     },
     {
       color: "#FF0000",
       title: "Career at Henmova",
       desc: "We want to provide you with a platform to grow and excel as an individual, unleash your potential and make an impact in your region. Join our team of passionate game developers and help create the next generation of amazing games.",
-      img: "/services/cover.png",
+      img: "/service/cover2.png",
       button: {
         title: "Apply Today",
         href: "/jobs",
@@ -25,10 +26,14 @@ export default function ServicesSection() {
     },
   ];
 
-  const ImageComponent = ({ img, title }: { title: string; img: string }) => {
+  const ImageComponent = ({ img, title,className }: { title: string; img: string,className?:string }) => {
     return (
-      <div className="md:w-1/2">
+      <div className={cn(
+        "w-full md:w-1/2 overflow-hidden rounded-md",
+        className || ""
+      )}>
         <Image
+        draggable={false}
           src={img}
           alt={title}
           className="w-full rounded-md"
@@ -86,7 +91,7 @@ export default function ServicesSection() {
       {data.map((item, index) => (
         <div
           key={index}
-          className="flex flex-col items-center gap-4 md:flex-row"
+          className="flex flex-col items-center gap-4 md:flex-row "
         >
           {index % 2 === 0 ? (
             <>
@@ -96,7 +101,7 @@ export default function ServicesSection() {
                 desc={item.desc}
                 button={item.button}
               />
-              <ImageComponent img={item.img} title={item.title} />
+              <ImageComponent img={item.img} title={item.title} className="max-md:hidden" />
             </>
           ) : (
             <>

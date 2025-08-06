@@ -98,6 +98,7 @@ export default function GamesList({ games }: GamesListProps) {
           <Link key={game.slug} href={`/games/${game.slug}`}>
             <Card className="overflow-hidden group relative cursor-pointer">
               <Image
+                draggable={false}
                 className="transition-all ease-in-out duration-300 group-hover:scale-110"
                 src={game.coverImage.src}
                 height={900}

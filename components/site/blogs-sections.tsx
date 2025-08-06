@@ -37,6 +37,7 @@ export default async function BlogsSection() {
                 <CardTitle>
                   {blog.coverImage && blog.coverImage.src && (
                     <Image
+                      draggable={false}
                       src={blog.coverImage.src}
                       alt={blog.coverImage.alt}
                       width={blog.coverImage.width || 400}

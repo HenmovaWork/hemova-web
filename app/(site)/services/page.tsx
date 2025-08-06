@@ -30,7 +30,7 @@ export default function ServicesPage() {
               {
                 title: "PC and Mobile Games",
                 desc: "Unlock the world of gaming on any platform with our PC and mobile game development services! Whether you prefer the precision of a mouse and keyboard or the convenience of gaming on the go, we've got you covered. Our team crafts captivating experiences tailored to each platform, ensuring seamless gameplay and maximum enjoyment for players everywhere.",
-                icon: "/icons/services.png",
+                icon: "/icons/service.png",
               },
             ].map(({ desc, title, icon }, idx) => (
               <Card
@@ -38,7 +38,13 @@ export default function ServicesPage() {
                 className="overflow-hidden rounded-2xl border-none shadow-md shadow-black/40"
               >
                 <CardHeader className="text-white bg-[#3F3F3F] flex flex-row items-center gap-2">
-                  <Image src={icon} width={50} height={50} alt={title} />
+                  <Image
+                    draggable={false}
+                    src={icon}
+                    width={50}
+                    height={50}
+                    alt={title}
+                  />
                   <CardTitle className="text-lg w-full text-center font-bold uppercase leading-tight">
                     {title}
                   </CardTitle>

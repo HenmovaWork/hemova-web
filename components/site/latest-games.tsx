@@ -12,7 +12,7 @@ interface LatestGamesProps {
 
 export default function LatestGames({ games }: LatestGamesProps) {
   const [bgImg, setBgImg] = useState<string>(
-    games.length > 0 ? games[0].coverImage.src : "",
+    games.length > 0 ? games[0].coverImage.src : ""
   );
 
   if (!games || games.length === 0) {
@@ -47,6 +47,7 @@ export default function LatestGames({ games }: LatestGamesProps) {
                 <CardTitle className="text-center">
                   <Link href={`/games/${game.slug}`}>
                     <Image
+                      draggable={false}
                       src={game.coverImage.src || "/placeholder.svg"}
                       alt={game.coverImage.alt || game.title}
                       width={game.coverImage.width || 300}

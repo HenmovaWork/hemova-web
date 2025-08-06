@@ -32,7 +32,8 @@ function PlatformIcon(props: PlatformIconProps) {
 
   return (
     <Image
-    draggable={false}
+      draggable={false}
+     
       className={props.className}
       src={iconSrc}
       alt={props.alt as string}
@@ -88,6 +89,7 @@ export default function GameDetail({ game }: GameDetailProps) {
             {/* Cover Image */}
             <div className="col-span-2">
               <Image
+                draggable={false}
                 src={game.coverImage.src}
                 alt={game.coverImage.alt || game.title}
                 width={game.coverImage.width || 800}
