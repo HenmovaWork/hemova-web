@@ -87,6 +87,7 @@ export default function ApplyForm({ jobSlug }: ApplyFormProps) {
       },
       portfolio: "",
       coverLetter: "",
+      file: undefined,
     },
   });
 
@@ -250,7 +251,6 @@ export default function ApplyForm({ jobSlug }: ApplyFormProps) {
                     onChange={(e) => {
                       onChange(e.target.files);
                     }}
-                    {...field}
                     ref={fileInputRef}
                   />
                 </FormControl>

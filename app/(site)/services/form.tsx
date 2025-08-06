@@ -51,6 +51,17 @@ export default function WorkTogetherForm() {
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
+    defaultValues: {
+      name: "",
+      email: "",
+      phone: {
+        countryCode: "+91",
+        number: "",
+      },
+      topic: "",
+      requirements: "",
+      file: undefined,
+    },
   });
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
@@ -182,7 +193,6 @@ export default function WorkTogetherForm() {
                   }}
                   type="file"
                   accept="application/pdf"
-                  {...field}
                 />
               </FormControl>
               <FormMessage />
