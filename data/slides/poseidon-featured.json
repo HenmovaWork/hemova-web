@@ -1,0 +1,19 @@
+{
+  "title": "poseidon featured",
+  "backgroundImage": "/carousel/poseidon-featured/backgroundImage.jpg",
+  "overlayText": "Poseidon is a first-person horror game set on a haunted ship, where players face terrifying sea myths and survive the deadly mysteries of the deep.",
+  "ctaButtons": [
+    {
+      "text": "Play Now",
+      "url": "https://store.steampowered.com/app/3687030/Poseidon",
+      "style": "primary"
+    },
+    {
+      "text": "Learn More",
+      "url": "/games",
+      "style": "outline-solid"
+    }
+  ],
+  "order": 1,
+  "isActive": true
+}
