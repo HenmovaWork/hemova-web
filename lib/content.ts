@@ -58,7 +58,7 @@ function safeSerializeContent(content: any): any {
 // Blog content utilities
 export class BlogService {
   static async getAll(
-    options: ContentListOptions = {},
+    options: ContentListOptions = {}
   ): Promise<ContentListResult<Blog>> {
     try {
       const blogs = await reader.collections.blogs.all();
@@ -73,13 +73,13 @@ export class BlogService {
           coverImage: transformImageAsset(entry.coverImage),
           publishedAt: entry.publishedAt || new Date().toISOString(),
           excerpt: entry.excerpt || "",
-        })),
+        }))
       );
 
       // Sort by published date (newest first)
       const sortedBlogs = transformedBlogs.sort(
         (a, b) =>
-          new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime(),
+          new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
       );
 
       // Apply pagination if specified
@@ -105,7 +105,7 @@ export class BlogService {
       if (!entry) {
         throw new ContentError(
           `Blog with slug "${slug}" not found`,
-          "NOT_FOUND",
+          "NOT_FOUND"
         );
       }
 
@@ -126,7 +126,7 @@ export class BlogService {
       throw new ContentError(
         `Failed to fetch blog with slug "${slug}"`,
         "FETCH_ERROR",
-        error,
+        error
       );
     }
   }
@@ -140,7 +140,7 @@ export class BlogService {
 // Game content utilities
 export class GameService {
   static async getAll(
-    options: ContentListOptions = {},
+    options: ContentListOptions = {}
   ): Promise<ContentListResult<Game>> {
     try {
       const games = await reader.collections.games.all();
@@ -158,12 +158,12 @@ export class GameService {
           artStyles: entry.artStyles || "",
           platforms: entry.platforms || "",
           downloadLinks: (entry.downloadLinks as DownloadLink[]) || [],
-        })),
+        }))
       );
 
       // Sort by title alphabetically
       const sortedGames = transformedGames.sort((a, b) =>
-        a.title.localeCompare(b.title),
+        a.title.localeCompare(b.title)
       );
 
       // Apply pagination if specified
@@ -189,7 +189,7 @@ export class GameService {
       if (!entry) {
         throw new ContentError(
           `Game with slug "${slug}" not found`,
-          "NOT_FOUND",
+          "NOT_FOUND"
         );
       }
 
@@ -213,7 +213,7 @@ export class GameService {
       throw new ContentError(
         `Failed to fetch game with slug "${slug}"`,
         "FETCH_ERROR",
-        error,
+        error
       );
     }
   }
@@ -226,7 +226,7 @@ export class GameService {
   static async getByGenre(genre: string): Promise<Game[]> {
     const allGames = await this.getAll();
     return allGames.items.filter((game) =>
-      game.genres.toLowerCase().includes(genre.toLowerCase()),
+      game.genres.toLowerCase().includes(genre.toLowerCase())
     );
   }
 }
@@ -234,7 +234,7 @@ export class GameService {
 // Job content utilities
 export class JobService {
   static async getAll(
-    options: ContentListOptions = {},
+    options: ContentListOptions = {}
   ): Promise<ContentListResult<Job>> {
     try {
       const jobs = await reader.collections.jobs.all();
@@ -252,7 +252,7 @@ export class JobService {
           requirements: entry.requirements ? [...entry.requirements] : [],
           postedAt: entry.postedAt || new Date().toISOString(),
           isActive: entry.isActive,
-        })),
+        }))
       );
 
       // Filter only active jobs and sort by posted date (newest first)
@@ -260,7 +260,7 @@ export class JobService {
         .filter((job) => job.isActive)
         .sort(
           (a, b) =>
-            new Date(b.postedAt).getTime() - new Date(a.postedAt).getTime(),
+            new Date(b.postedAt).getTime() - new Date(a.postedAt).getTime()
         );
 
       // Apply pagination if specified
@@ -286,7 +286,7 @@ export class JobService {
       if (!entry) {
         throw new ContentError(
           `Job with slug "${slug}" not found`,
-          "NOT_FOUND",
+          "NOT_FOUND"
         );
       }
 
@@ -310,7 +310,7 @@ export class JobService {
       throw new ContentError(
         `Failed to fetch job with slug "${slug}"`,
         "FETCH_ERROR",
-        error,
+        error
       );
     }
   }
@@ -357,7 +357,7 @@ export class SlideService {
 // Media content utilities
 export class MediaService {
   static async getAll(
-    options: ContentListOptions = {},
+    options: ContentListOptions = {}
   ): Promise<ContentListResult<Media>> {
     try {
       const media = await reader.collections.media.all();
@@ -374,7 +374,7 @@ export class MediaService {
 
       // Sort by name alphabetically
       const sortedMedia = transformedMedia.sort((a, b) =>
-        a.name.localeCompare(b.name),
+        a.name.localeCompare(b.name)
       );
 
       // Apply pagination if specified
@@ -405,7 +405,7 @@ export class MediaService {
       if (!entry) {
         throw new ContentError(
           `Media with slug "${slug}" not found`,
-          "NOT_FOUND",
+          "NOT_FOUND"
         );
       }
 
@@ -425,7 +425,7 @@ export class MediaService {
       throw new ContentError(
         `Failed to fetch media with slug "${slug}"`,
         "FETCH_ERROR",
-        error,
+        error
       );
     }
   }

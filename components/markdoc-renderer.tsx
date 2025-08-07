@@ -13,16 +13,11 @@ interface MarkdocRendererProps {
 function renderKeysticContent(content: any): React.ReactNode {
   if (!content) return null;
 
-  // Handle text nodes
-  if (content.$mdtype === "Text") {
-    return content.value;
-  }
+  // Handle Keystatic Node structure
+  if (content.$$mdtype === "Node") {
+    const { type, children = [], attributes = {} } = content;
 
-  // Handle tag nodes
-  if (content.$mdtype === "Tag") {
-    const { name, children = [] } = content;
-
-    switch (name) {
+    switch (type) {
       case "document":
         return (
           <>
@@ -44,7 +39,7 @@ function renderKeysticContent(content: any): React.ReactNode {
           </p>
         );
       case "heading":
-        const level = content.attributes?.level || 1;
+        const level = attributes?.level || 1;
         const HeadingTag = `h${level}` as
           | "h1"
           | "h2"
@@ -72,7 +67,7 @@ function renderKeysticContent(content: any): React.ReactNode {
           </HeadingTag>
         );
       case "list":
-        const isOrdered = content.attributes?.ordered;
+        const isOrdered = attributes?.ordered;
         const ListTag = isOrdered ? "ol" : "ul";
         const listClass = isOrdered
           ? "list-decimal pl-5 mb-4"
@@ -86,7 +81,9 @@ function renderKeysticContent(content: any): React.ReactNode {
             ))}
           </ListTag>
         );
+      case "list_item":
       case "listItem":
+      case "item":
         return (
           <li className="mb-1">
             {children.map((child: any, i: number) => (
@@ -106,6 +103,7 @@ function renderKeysticContent(content: any): React.ReactNode {
             ))}
           </strong>
         );
+      case "emphasis":
       case "em":
         return (
           <em className="italic">
@@ -126,11 +124,26 @@ function renderKeysticContent(content: any): React.ReactNode {
             ))}
           </code>
         );
+      case "code_block":
+      case "codeBlock":
+        return (
+          <pre className="bg-gray-900 text-white p-4 rounded-lg overflow-x-auto mb-4">
+            <code>
+              {children.map((child: any, i: number) => (
+                <React.Fragment key={i}>
+                  {renderKeysticContent(child)}
+                </React.Fragment>
+              ))}
+            </code>
+          </pre>
+        );
       case "link":
         return (
           <a
-            href={content.attributes?.href}
+            href={attributes?.href}
             className="text-blue-600 hover:underline"
+            target={attributes?.target}
+            rel={attributes?.rel}
           >
             {children.map((child: any, i: number) => (
               <React.Fragment key={i}>
@@ -139,17 +152,79 @@ function renderKeysticContent(content: any): React.ReactNode {
             ))}
           </a>
         );
-      default:
+      case "text":
         return (
-          <div>
+          content.attributes?.content ||
+          content.value ||
+          content.text ||
+          content.literal ||
+          ""
+        );
+      case "inline":
+        return (
+          <>
             {children.map((child: any, i: number) => (
               <React.Fragment key={i}>
                 {renderKeysticContent(child)}
               </React.Fragment>
             ))}
-          </div>
+          </>
         );
+      case "item":
+        return (
+          <li className="mb-1">
+            {children.map((child: any, i: number) => (
+              <React.Fragment key={i}>
+                {renderKeysticContent(child)}
+              </React.Fragment>
+            ))}
+          </li>
+        );
+      case "thematic_break":
+      case "hr":
+        return <hr className="my-6 border-gray-300" />;
+      case "blockquote":
+        return (
+          <blockquote className="border-l-4 border-gray-300 pl-4 italic my-4">
+            {children.map((child: any, i: number) => (
+              <React.Fragment key={i}>
+                {renderKeysticContent(child)}
+              </React.Fragment>
+            ))}
+          </blockquote>
+        );
+      default:
+        // For unknown node types, render children if available
+        if (children && children.length > 0) {
+          return (
+            <>
+              {children.map((child: any, i: number) => (
+                <React.Fragment key={i}>
+                  {renderKeysticContent(child)}
+                </React.Fragment>
+              ))}
+            </>
+          );
+        }
+        // If it has text content, render it
+        if (content.attributes?.content || content.value || content.text) {
+          return content.attributes?.content || content.value || content.text;
+        }
+        return null;
     }
+  }
+
+  // Handle direct text content
+  if (typeof content === "string") {
+    return content;
+  }
+
+  // Handle content with text/value properties
+  if (content.value !== undefined) {
+    return content.value;
+  }
+  if (content.text !== undefined) {
+    return content.text;
   }
 
   // Handle arrays
@@ -175,6 +250,24 @@ export function MarkdocRenderer({
     return null;
   }
 
+  // Handle Keystatic content structure (wrapped in a 'node' property)
+  if (content.node && content.node.$$mdtype === "Node") {
+    try {
+      return (
+        <div className={`prose prose-gray max-w-none ${className}`}>
+          {renderKeysticContent(content.node)}
+        </div>
+      );
+    } catch (error) {
+      console.error("Error rendering Keystatic content:", error);
+      return (
+        <div className={`text-red-600 ${className}`}>
+          Error rendering Keystatic content
+        </div>
+      );
+    }
+  }
+
   // If content is a string, we need to parse and transform it
   if (typeof content === "string") {
     try {
@@ -196,7 +289,7 @@ export function MarkdocRenderer({
     }
   }
 
-  // Use the simple Keystatic content renderer
+  // Use the simple Keystatic content renderer for other cases
   try {
     return (
       <div className={`prose prose-gray max-w-none ${className}`}>
