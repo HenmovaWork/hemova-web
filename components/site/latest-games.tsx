@@ -40,7 +40,7 @@ export default function LatestGames({ games }: LatestGamesProps) {
           {games.slice(0, 3).map((game, index) => (
             <Card
               key={game.slug}
-              className="bg-white/10 backdrop-blur-xs border-white/20 text-white hover:bg-white/20 transition-all cursor-pointer w-80 h-[22rem] in-out duration-150"
+              className="bg-white/10 backdrop-blur-xs border-white/20 text-white hover:bg-white/20 transition-all cursor-pointer w-80 in-out duration-450 hover:scale-105 "
               onMouseEnter={() => setBgImg(game.coverImage.src)}
             >
               <CardHeader className="p-3">
@@ -50,9 +50,9 @@ export default function LatestGames({ games }: LatestGamesProps) {
                       draggable={false}
                       src={game.coverImage.src || "/placeholder.svg"}
                       alt={game.coverImage.alt || game.title}
-                      width={game.coverImage.width || 300}
-                      height={game.coverImage.height || 400}
-                      className="rounded-md w-full h-48 object-cover mx-auto"
+                      width={900}
+                      height={1600}
+                      className="rounded-md  mx-auto"
                       quality={85}
                       loading="lazy"
                     />

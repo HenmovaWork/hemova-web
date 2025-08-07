@@ -189,6 +189,14 @@ export default config({
           fields.object({
             text: fields.text({ label: "Button Text" }),
             url: fields.url({ label: "Button URL" }),
+            target: fields.select({
+              label: "Open in New Tab",
+              options: [
+                { label: "Yes", value: "_blank" },
+                { label: "No", value: "_self" },
+              ],
+              defaultValue: "_blank",
+            }),
             style: fields.select({
               label: "Button Style",
               options: [

@@ -140,6 +140,7 @@ const Carousel = ({ slides }: { slides: Slide[] }) => {
                   <Link
                     key={btnIndex}
                     href={button.url}
+                    target={button.target}
                     className={`px-4 sm:px-6 py-2.5 sm:py-3 text-center text-sm sm:text-base rounded-lg font-semibold transition-all duration-300 whitespace-nowrap ${
                       button.style === "primary"
                         ? "bg-blue-600 text-white hover:bg-blue-700 hover:scale-105"

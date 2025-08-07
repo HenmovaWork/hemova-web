@@ -6,12 +6,14 @@
     {
       "text": "Wishlist Now!",
       "url": "https://store.steampowered.com/app/3687030/Poseidon",
-      "style": "primary"
+      "style": "primary",
+      "target": "_blank"
     },
     {
       "text": "Learn More",
       "url": "/games",
       "style": "outline-solid"
+
     }
   ],
   "order": 1,

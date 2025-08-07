@@ -16,6 +16,7 @@ export interface CTAButton {
   text: string;
   url: string;
   style: "primary" | "secondary" | "outline-solid";
+  target?: "_blank" | "_self"; // Optional, defaults to "_self"
 }
 
 // Blog content type
