@@ -5,6 +5,7 @@ import {
   Job,
   Slide,
   Media,
+  Legal,
   ContentListOptions,
   ContentListResult,
   ContentError,
@@ -431,6 +432,84 @@ export class MediaService {
   }
 }
 
+// Legal content utilities
+export class LegalService {
+  static async getAll(
+    options: ContentListOptions = {}
+  ): Promise<ContentListResult<Legal>> {
+    try {
+      const legal = await reader.collections.legal.all();
+
+      const transformedLegal: Legal[] = await Promise.all(
+        legal.map(async ({ slug, entry }) => ({
+          slug,
+          title: entry.title || "",
+          content: entry.content
+            ? safeSerializeContent(await entry.content())
+            : null,
+          lastUpdated: entry.lastUpdated || new Date().toISOString(),
+          excerpt: entry.excerpt || "",
+        }))
+      );
+
+      // Sort by last updated date (newest first)
+      const sortedLegal = transformedLegal.sort(
+        (a, b) =>
+          new Date(b.lastUpdated).getTime() - new Date(a.lastUpdated).getTime()
+      );
+
+      // Apply pagination if specified
+      const { limit, offset = 0 } = options;
+      const paginatedLegal = limit
+        ? sortedLegal.slice(offset, offset + limit)
+        : sortedLegal.slice(offset);
+
+      return {
+        items: paginatedLegal,
+        total: transformedLegal.length,
+        hasMore: limit ? offset + limit < transformedLegal.length : false,
+      };
+    } catch (error) {
+      throw new ContentError(
+        "Failed to fetch legal pages",
+        "FETCH_ERROR",
+        error
+      );
+    }
+  }
+
+  static async getBySlug(slug: string): Promise<Legal> {
+    try {
+      const entry = await reader.collections.legal.read(slug);
+      if (!entry) {
+        throw new ContentError(
+          `Legal page with slug "${slug}" not found`,
+          "NOT_FOUND"
+        );
+      }
+
+      return {
+        slug,
+        title: entry.title || "",
+        content: entry.content
+          ? safeSerializeContent(await entry.content())
+          : null,
+        lastUpdated: entry.lastUpdated || new Date().toISOString(),
+        excerpt: entry.excerpt || "",
+      };
+    } catch (error) {
+      if (error instanceof ContentError) {
+        throw error;
+      }
+      throw new ContentError(
+        `Failed to fetch legal page with slug "${slug}"`,
+        "FETCH_ERROR",
+        error
+      );
+    }
+  }
+}
+
 // Unified content service for convenience
 export class ContentService {
   static blogs = BlogService;
@@ -438,4 +517,5 @@ export class ContentService {
   static jobs = JobService;
   static slides = SlideService;
   static media = MediaService;
+  static legal = LegalService;
 }

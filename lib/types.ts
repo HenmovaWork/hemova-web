@@ -69,14 +69,28 @@ export interface Slide {
 
 // Media content type
 export interface Media {
-  slug: string;
-  name: string;
-  file: ImageAsset;
   altText: string;
+  file: ImageAsset;
+  name: string;
+  slug: string;
+  title?: string;
+  image?: ImageAsset;
+  alt?: string;
   caption: string;
   category: "game-screenshots" | "logos" | "icons" | "blog-images" | "general";
   tags: string;
 }
+
+// Legal content type
+export interface Legal {
+  slug: string;
+  title: string;
+  content: any; // Markdoc content
+  lastUpdated: string;
+  excerpt: string;
+}
+
+// Utility types for content fetching
 
 // Utility types for content fetching
 export interface ContentListOptions {
@@ -108,7 +122,7 @@ export class ContentError extends Error {
   constructor(
     message: string,
     code: "NOT_FOUND" | "INVALID_SLUG" | "FETCH_ERROR" | "PARSE_ERROR",
-    details?: any,
+    details?: any
   ) {
     super(message);
     this.name = "ContentError";

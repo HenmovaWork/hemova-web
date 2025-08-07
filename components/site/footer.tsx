@@ -123,12 +123,12 @@ export default async function Footer() {
           <div className="flex justify-center sm:justify-end">
             <ul className="text-gray-500 dark:text-gray-400 text-sm gap-4 flex justify-center items-center">
               <li>
-                <Link href="#" className="hover:underline">
+                <Link href="/legal/privacy-policy" className="hover:underline">
                   Privacy Policy
                 </Link>
               </li>
               <li>
-                <Link href="#" className="hover:underline">
+                <Link href="/legal/terms-condition" className="hover:underline">
                   Terms &amp; Conditions
                 </Link>
               </li>

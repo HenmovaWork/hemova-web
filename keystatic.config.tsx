@@ -15,6 +15,7 @@ export default config({
     },
     navigation: {
       Content: ["games", "blogs", "slides", "media", "jobs"],
+      Legal: ["legal"],
       "Social Links": ["socialLinks"],
     },
   },
@@ -118,7 +119,7 @@ export default config({
           {
             label: "Download Links",
             itemLabel: (props) => props.fields.platform.value,
-          },
+          }
         ),
       },
     }),
@@ -210,7 +211,7 @@ export default config({
           {
             label: "Call-to-Action Buttons",
             itemLabel: (props) => props.fields.text.value,
-          },
+          }
         ),
         order: fields.integer({
           label: "Display Order",
@@ -257,6 +258,26 @@ export default config({
         tags: fields.text({
           label: "Tags",
           description: "Comma-separated tags for organization",
+        }),
+      },
+    }),
+    legal: collection({
+      label: "Legal Pages",
+      slugField: "title",
+      path: "data/legal/*",
+      format: { data: "json" },
+      schema: {
+        title: fields.slug({ name: { label: "Title" } }),
+        content: fields.markdoc({
+          label: "Content",
+        }),
+        lastUpdated: fields.date({
+          label: "Last Updated",
+          defaultValue: { kind: "today" },
+        }),
+        excerpt: fields.text({
+          label: "Excerpt",
+          description: "Brief description of the legal page",
         }),
       },
     }),
