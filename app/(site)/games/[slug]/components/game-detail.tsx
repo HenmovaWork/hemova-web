@@ -85,16 +85,16 @@ export default function GameDetail({ game }: GameDetailProps) {
 
         {/* Main Content Grid */}
         <div className="container mx-auto">
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div className="max-md:flex-col flex justify-around max-w-4xl mx-auto">
             {/* Cover Image */}
             <div className="col-span-2">
               <Image
                 draggable={false}
                 src={game.coverImage.src}
                 alt={game.coverImage.alt || game.title}
-                width={game.coverImage.width || 800}
-                height={game.coverImage.height || 450}
-                className="w-full h-full object-cover aspect-video rounded-lg"
+                width={500}
+                height={700}
+                className=" rounded-lg"
                 priority
                 quality={90}
               />
