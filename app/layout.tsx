@@ -13,6 +13,10 @@ const fontSans = FontSans({
 export const metadata: Metadata = {
   title: "Henmova",
   description: "Game Development Agency",
+   // ✅ Add this section
+  other: {
+    "google-site-verification": "AOibrwfRFuWzi2T2p4EoMuPq0RFAWK-uWbczVwLRd5o",
+  },
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
